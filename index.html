@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Permanent Counter</title>
+  <style>
+    body { font-family: sans-serif; text-align: center; margin-top: 50px; }
+    button { padding: 10px 20px; font-size: 16px; }
+    p { font-size: 24px; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h1>Click Counter</h1>
+  <button id="btn">Click me!</button>
+  <p id="count">0</p>
+  <button id="reset">Reset</button>
+
+  <script>
+    let count = localStorage.getItem("count") 
+      ? parseInt(localStorage.getItem("count")) 
+      : 0;
+
+    const countDisplay = document.getElementById("count");
+    countDisplay.textContent = count;
+
+    document.getElementById("btn").onclick = function() {
+      count++;
+      countDisplay.textContent = count;
+      localStorage.setItem("count", count);
+    };
+
+    document.getElementById("reset").onclick = function() {
+      count = 0;
+      countDisplay.textContent = count;
+      localStorage.setItem("count", count);
+    };
+  </script>
+</body>
+</html>
